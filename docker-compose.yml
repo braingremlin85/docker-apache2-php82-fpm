@@ -4,7 +4,7 @@ services:
     image: braingremlin/docker-apache:latest
     restart: unless-stopped
     networks:
-      npm-bridge:
+      - npm-bridge
     ports:
       - ${EXTERNAL_PORT:-8888}:80 # la porta definita nel Dockerfile
     volumes:
@@ -18,7 +18,7 @@ services:
 
 networks:
   npm-bridge:
-    external: true
+    name: npm_bridge
 
 volumes:
   data:
