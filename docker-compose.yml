@@ -1,7 +1,7 @@
 services:
   dokuwiki-alpine:
     container_name: apache2
-    image: braingremlin/alpine-php-apache:latest
+    image: braingremlin/docker-apache:latest
     restart: unless-stopped
     ports:
       - ${EXTERNAL_PORT:-8888}:80 # la porta definita nel Dockerfile
