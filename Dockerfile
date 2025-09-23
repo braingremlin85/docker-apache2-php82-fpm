@@ -90,9 +90,6 @@ ADD ${INCLUDES_BASEURL}www.conf /etc/php${PHP_VERSION}/php-fpm.d/www.conf
 
 ADD ${INCLUDES_BASEURL}php.ini /usr/local/etc/php/php.ini
 
-ADD ${INCLUDES_BASEURL}dokuwiki_update.sh /usr/local/bin/dokuwiki_update.sh
-RUN chmod +x /usr/local/bin/dokuwiki_update.sh
-
 ENTRYPOINT ["/init"]
 
 EXPOSE 80

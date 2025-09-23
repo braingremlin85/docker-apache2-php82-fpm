@@ -1,7 +1,7 @@
 services:
   dokuwiki-alpine:
-    container_name: dokuwiki
-    image: braingremlin/alpine-php-apache:1.5
+    container_name: apache2
+    image: braingremlin/alpine-php-apache:latest
     restart: unless-stopped
     ports:
       - ${EXTERNAL_PORT:-8888}:80 # la porta definita nel Dockerfile
@@ -9,15 +9,12 @@ services:
       #- data:/var/www/localhost/htdocs
       #- backup:/home/backup
       - ${DATA_VOLUME:-data}:/var/www/localhost/htdocs
-      - ${BACKUP_VOLUME:-backup}:/home/backup
-      #- /volume1/docker/dokuwiki/html:/var/www/localhost/htdocs
-      #- /volume1/docker/dokuwiki/backup:/home/backup
      # if you need to customize php.ini settings    
      #- /volume1/docker/dokuwiki/php/php.ini:/usr/local/etc/php/php.ini
     env_file:
-      - stack.env      
+      - stack.env
 
-        
+
 volumes:
   data:
   backup:
