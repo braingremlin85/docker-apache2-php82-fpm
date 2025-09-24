@@ -12,7 +12,7 @@ FROM build-${TARGETARCH} AS build
 
 ENV PHP_VERSION="82"
 ARG S6_OVERLAY_VERSION="3.2.1.0"
-ARG INCLUDES_BASEURL="https://raw.githubusercontent.com/braingremlin85/docker-apache/master/includes/"
+ARG INCLUDES_BASEURL="https://raw.githubusercontent.com/braingremlin85/docker-apache2-php82-fpm/master/includes/"
 
 
 

@@ -1,25 +1,24 @@
 services:
   dokuwiki-alpine:
     container_name: apache2
-    image: braingremlin/docker-apache:latest
+    image: braingremlin/apache2-php82-fpm:latest
     restart: unless-stopped
+    # if a reverse proxy is used in front of this webserver you need to set a common network for the proxy and the proxied webservers to allow direct internal communication
     networks:
       - npm-bridge
     ports:
-      - ${EXTERNAL_PORT:-8888}:80 # la porta definita nel Dockerfile
+      - ${EXTERNAL_PORT:-8888}:80 # EXTERNAL_PORT variable defined on .env file
     volumes:
-      #- data:/var/www/localhost/htdocs
-      #- backup:/home/backup
-      - ${DATA_VOLUME:-data}:/var/www/localhost/htdocs
-     # if you need to customize php.ini settings    
-     #- /volume1/docker/dokuwiki/php/php.ini:/usr/local/etc/php/php.ini
+      - ${DATA_VOLUME:-data}:/var/www/localhost/htdocs # DATA_VOLUME variable defined on .env file
+     # if you need customized php.ini mount it here
+     #- /path/to/php.ini:/usr/local/etc/php/php.ini
     env_file:
-      - stack.env
+      - stack.env # put environment variables on this file
 
+# create the network if doesn't exist
 networks:
   npm-bridge:
     name: npm_bridge
 
 volumes:
   data:
-  backup:
