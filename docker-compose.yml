@@ -8,9 +8,12 @@ services:
       - npm-bridge
     ports:
       - ${EXTERNAL_PORT:-8888}:80 # EXTERNAL_PORT variable defined on .env file
+    # needed for xdebug
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ${DATA_VOLUME:-data}:/var/www/localhost/htdocs # DATA_VOLUME variable defined on .env file
-     # if you need customized php.ini mount it here
+     # if you need customized php.ini mount it here, .user.ini is also enabled https://www.php.net/manual/it/configuration.file.per-user.php
      #- /path/to/php.ini:/usr/local/etc/php/php.ini
     env_file:
       - stack.env # put environment variables on this file

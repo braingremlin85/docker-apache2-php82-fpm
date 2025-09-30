@@ -1,0 +1,6 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+if [ -n "$XDEBUG" ] && [ "$XDEBUG" == "true" ]; then
+    mv /etc/php82/conf.d/50_xdebug.off /etc/php82/conf.d/50_xdebug.ini
+fi
