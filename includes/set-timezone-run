@@ -3,4 +3,6 @@
 
 TZ=${TZ:-UTC}
 
-ln -s /usr/share/zoneinfo/${TZ} /etc/localtime
+ln -s /usr/share/zoneinfo/${TZ} /etc/localtime || echo "Timezone already set!" && exit 0
+
+echo "Timezone set to $TZ"
