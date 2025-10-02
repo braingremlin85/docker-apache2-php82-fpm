@@ -20,7 +20,7 @@ RUN apk update && apk upgrade
 
 RUN apk add --no-cache shadow bash curl tzdata
 
-RUN apk add --no-cache apache2-proxy php${PHP_VERSION}-fpm 
+RUN apk add --no-cache apache2-proxy php${PHP_VERSION}-fpm
 
 RUN apk --no-cache add freetype-dev \
 	libjpeg-turbo-dev \
